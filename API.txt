@@ -1,0 +1,80 @@
+Api Description
+
+1. ROLE MASTER
+   a)localhost:8080/api/getAllRole(GET METHOD)
+   b)  localhost:8080/api/saveRole(POST METHOD)
+       E.G  {"roleName":"ADMIN"}
+
+2. USER MASTER API
+     a) localhost:8080/api/findAllUser(GET METHOD)
+	 b) localhost:8080/api/saveUser(POST)
+	    E.G {"userId":"sa","password":"121","roleSet": [{"roleId":"1","roleName":"ADMIN"}]}
+		
+3.	CUSTOMER MAMSTER
+    a) 	localhost:8080/api/getAllCustomer(GET METHOD)
+	b) localhost:8080/api/saveCustomer(POST)
+	   E.G {"customerName":"Sohan lal","customerAddress":"A-BLOCK,SECTER 144 NOIDA","customerMobileNo":"4545454545","role":"CUSTOMER"} 
+	   
+4.  Item Category
+   a)localhost:8080/api/getAllItemCategory(GET METHOD)
+   b)localhost:8080/api/saveItemCategory(POST METHOD)
+     E.G {"categoryName":"Groceries Item"}   
+
+
+5.	 Item
+     a)localhost:8080/api/getAllItems(GET METHOD)
+     b)localhost:8080/api/saveItem(POST METHOD)
+	   E.G {"itemName":"Reynolds pen","saleRate":"12","purchaseRate":"10","itemCategory":{"categoryId":"1","categoryName": "GROCERIES ITEM"}}
+	   
+6.  Bill
+        a) localhost:8080/api/generateBill?api/generateBill/{loginId}[@PathVariable("loginId")String loginId]
+           E.G  [{"itemName":"Patanjali Ghee","quantity":"3"}]
+
+
+	  OUT PUT JSON {
+    
+	"invoiceId": 8,
+    "inviceNo": "-1565646527",
+    "inviceDate": [
+        2019,
+        12,
+        11
+    ],
+    "invoiceDiscount": 3.6,
+    "totalAmount": 36.0,
+    "grossAmount": 32.4,
+    "address": "A-56,NEW DELHI-102022",
+    "invoiceItemSet": [
+        {
+            "invoiceItemId": 8,
+            "qty": 3,
+            "amount": 12.0,
+            "totalAmount": 36.0,
+            "item": {
+                "itemId": 2,
+                "itemCategory": {
+                    "categoryId": 1,
+                    "categoryName": "GROCERIES ITEM"
+                },
+                "itemName": "PATANJALI GHEE",
+                "saleRate": 12.0,
+                "purchaseRate": 10.0,
+                "createdOn": [
+                    2019,
+                    12,
+                    11
+                ],
+                "updateOn": [
+                    2019,
+                    12,
+                    11
+                ]
+            }
+        }
+    ]
+}	   
+	   
+ 
+   
+       
+   
