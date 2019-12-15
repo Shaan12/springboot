@@ -1,0 +1,51 @@
+package com.xebia.scs;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
+import java.util.Arrays;
+import java.util.List;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import com.xebia.scs.dto.CartItemDTO;
+import com.xebia.scs.model.InvoiceEntity;
+import com.xebia.scs.model.UserEntity;
+import com.xebia.scs.service.IUserService;
+import com.xebia.scs.service.InvoiceService;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class InvoiceServiceTest {
+
+
+	@Autowired
+	InvoiceService<InvoiceEntity, Long> invoiceService2;
+	
+	@Autowired
+	IUserService<UserEntity, String>userService;
+	
+
+	@Test
+	public void generateInvoiceTest() {
+		
+		List<CartItemDTO> itemList = Arrays.asList(new CartItemDTO("PATANJALI - COMBO (SABZI MASALE)", 3));
+		
+			String userId="AFFILATE_EMPLOYEE_2";
+			
+			if(userService.findByUserId(userId).isPresent()) {
+				assertNotNull(invoiceService2.saveInvoice(userId, itemList));
+			}
+			
+			else {
+			assertEquals("User not found",invoiceService2.saveInvoice("@4969378402838085704", itemList));
+			
+			}
+		
+	}
+
+}
